@@ -1,5 +1,14 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
-{{!-- Feel free to remove this! --}}
+{{#paper-toolbar as |toolbar|}}
+  {{#toolbar.tools}}
+    <h2>YouTrack Activities</h2>
+    <span class="flex"></span>
+    {{#if session.isAuthenticated}}
+      {{#paper-button onClick=(action "invalidateSession")}}
+        Logout
+        {{paper-icon "exit_to_app"}}
+      {{/paper-button}}
+    {{/if}}
+  {{/toolbar.tools}}
+{{/paper-toolbar}}
 
 {{outlet}}

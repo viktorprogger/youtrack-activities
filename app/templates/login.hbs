@@ -1,0 +1,29 @@
+<div class="layout-row layout-align-center-center">
+  {{#paper-card as |card|}}
+    {{#card.title as |title|}}
+      {{#title.text as |text|}}
+        {{#text.headline}}Log in to YouTrack{{/text.headline}}
+      {{/title.text}}
+    {{/card.title}}
+
+    {{#card.content class="layout-row layout-align-space-between"}}
+      {{#paper-form onSubmit=(action "authenticate") as |form|}}
+        <div class="layout-column">
+          {{#if errorMessage}}
+            <div class="flex">{{errorMessage}}</div>
+          {{/if}}
+        </div>
+
+        <div class="layout-row">
+          {{form.input label="Login" required=true value=login onChange=(action (mut login))}}
+          {{form.input label="Password"  type="password" required=true value=password onChange=(action (mut password))}}
+        </div>
+        <div class="layout-row">
+          {{#form.submit-button raised=true primary=true disabled=form.isInvalid}}
+            Login
+          {{/form.submit-button}}
+        </div>
+      {{/paper-form}}
+    {{/card.content}}
+  {{/paper-card}}
+</div>
